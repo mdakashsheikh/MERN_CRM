@@ -20,8 +20,10 @@ export default function ShowData(){
         setCustomer(allCustomer.allData)
     }
     console.log(customer);
+    
     return(
         <Table striped bordered hover variant="danger" >
+        
             <thead>
                 <tr>
                     <td>Name</td>

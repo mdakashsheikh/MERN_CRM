@@ -8,11 +8,6 @@ import Row from 'react-bootstrap/Row';
 
 export default function BasicForm() {
 
-  const nameRef = useRef();
-  const phoneRef = useRef();
-  const emailRef = useRef();
-  const designationRef = useRef()
-
 
   const [formName, setFormName] = useState("");
   const [formPhone, setFormPhone] = useState("");
@@ -26,7 +21,6 @@ export default function BasicForm() {
   async function handleSubmit(e) {
     
     e.preventDefault();
-
     console.log(formName);
     console.log(formPhone);
     console.log(formEmail);
@@ -56,13 +50,13 @@ export default function BasicForm() {
       await res.json();
 
       if (res.status === 200) {
-        // setFormName("");
-        // setFormPhone("");
-        // setFormEmail("");
-        // setFormDesignation("");
-        // setFormCompany("");
-        // setFormInfo("");
-        //setFormInterestLebel("")
+        setFormName("");
+        setFormPhone("");
+        setFormEmail("");
+        setFormDesignation("");
+        setFormCompany("");
+        setFormInfo("");
+        setFormInterestLebel("")
         console.log('Success');
       } else {
         console.log("Some error occured");
@@ -88,7 +82,7 @@ export default function BasicForm() {
             <Form.Label>Name:</Form.Label>
             <Form.Control placeholder="Enter customer name" 
               onChange={(e)=> setFormName(e.target.value)}
-              ref={nameRef}
+              value={formName}
             />
           </Form.Group>
 
@@ -96,7 +90,7 @@ export default function BasicForm() {
             <Form.Label>Phone</Form.Label>
             <Form.Control placeholder="Enter Phone number" 
               onChange={(e)=> setFormPhone(e.target.value)}
-              ref={phoneRef}
+              value={formPhone}
             />
           </Form.Group>
         </Row>
@@ -106,7 +100,7 @@ export default function BasicForm() {
             <Form.Label>Email:</Form.Label>
             <Form.Control type='email' placeholder="Enter email" 
               onChange={(e)=> setFormEmail(e.target.value)}
-              ref={emailRef}
+              value={formEmail}
             />
           </Form.Group>
 
@@ -114,7 +108,7 @@ export default function BasicForm() {
             <Form.Label>Designation</Form.Label>
             <Form.Control placeholder="Enter Designation" 
               onChange={(e)=> setFormDesignation(e.target.value)}
-              ref={designationRef}
+              value={formDesignation}
             />
           </Form.Group>
         </Row>
@@ -125,6 +119,7 @@ export default function BasicForm() {
             <Form.Label>Company:</Form.Label>
             <Form.Control placeholder="Enter company name" 
               onChange={(e)=> setFormCompany(e.target.value)}
+              value={formCompany}
             />
           </Form.Group>
 
@@ -132,6 +127,7 @@ export default function BasicForm() {
             <Form.Label>Information:</Form.Label>
             <Form.Control placeholder="Enter customer information" 
               onChange={(e)=> setFormInfo(e.target.value)}
+              value={formInfo}
             />
           </Form.Group>
         </Row>
@@ -147,7 +143,7 @@ export default function BasicForm() {
               <Form.Select aria-label="Default select example"
                 // value={formInterestLebel} 
                 onChange={(e)=> setFormInterestLebel(e.target.value)}
-
+                value={formInterestLebel}
               >
                   <option>Select Interest Level</option>
                   <option value="1">One</option>
