@@ -23,6 +23,7 @@ mongoose.connect(process.env.DB_CONN)
 .catch(err => console.log(err))
 
 app.post('/post', async(req, res) =>{
+
     console.log(req.body);
     
     const formName = req.body.formName;
@@ -49,6 +50,7 @@ app.post('/post', async(req, res) =>{
         newUser.save();
 
     } catch (error) {
+        res.status(400).send(error)
         console.log(error)
     }
 });
