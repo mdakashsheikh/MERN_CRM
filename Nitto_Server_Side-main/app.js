@@ -32,7 +32,7 @@ app.post('/post', async(req, res) =>{
     const formDesignation = req.body.formDesignation;
     const formCompany = req.body.formCompany;
     const formInfo = req.body.formInfo;
-    const formInterestLevel = req.body.formInterestLevel;
+    const formInterestLebel = req.body.formInterestLebel;
 
     try {
         const result = await User.create({
@@ -42,7 +42,7 @@ app.post('/post', async(req, res) =>{
             "designation": formDesignation,
             "company": formCompany,
             "info": formInfo,
-            "interest" : formInterestLevel,
+            "interest" : formInterestLebel,
 
         })  
         res.send(req.body);
