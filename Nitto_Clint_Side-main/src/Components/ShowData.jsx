@@ -22,6 +22,29 @@ export default function ShowData(){
     console.log(customer);
     return(
         <Table striped bordered hover variant="danger" >
+           
+           
+            {/* {()=> (
+                customer.length() > 0 ? 
+                null
+                : 
+                (<thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Phone</td>
+                        <td>Email</td>
+                        <td>Designation</td>
+                        <td>Company</td>
+                        <td>Information</td>
+                        <td>Interest Level</td>
+                        <td>Image</td>
+                        
+                    </tr>
+                </thead>)
+            )}   */}
+
+            
+            
             <thead>
                 <tr>
                     <td>Name</td>
@@ -31,6 +54,7 @@ export default function ShowData(){
                     <td>Company</td>
                     <td>Information</td>
                     <td>Interest Level</td>
+                    <td>Image</td>
                     
                 </tr>
             </thead>
@@ -44,6 +68,7 @@ export default function ShowData(){
                         <td>{val.company}</td>
                         <td>{val.info}</td>
                         <td>{val.interest}</td>
+                        <td>{val.image}</td>
                     </tr>
                 ))}
             </tbody>
