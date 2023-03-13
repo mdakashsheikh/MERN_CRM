@@ -16,6 +16,7 @@ export default function BasicForm() {
   const [formCompany, setFormCompany] = useState("");
   const [formInfo, setFormInfo] = useState("");
   const [formInterestLebel, setFormInterestLebel] = useState("");
+  const [formVisitingCard, setFormVisitingCard] = useState("");
 
 
   async function handleSubmit(e) {
@@ -45,6 +46,7 @@ export default function BasicForm() {
           formCompany: formCompany,
           formInfo: formInfo,
           formInterestLebel: formInterestLebel,
+          formVisitingCard: formVisitingCard, 
         }),
       });
 
@@ -136,7 +138,9 @@ export default function BasicForm() {
         <Row className="my-3 mx-auto">
           <Form.Group as={Col} controlId="formVisitingCard">
             <Form.Label>Visiting Card Upload</Form.Label>
-            <Form.Control type='file' />
+            <Form.Control type='file' 
+              onChange={(e)=> setFormVisitingCard(e.target.value)}
+            />
           </Form.Group>
           
           <Form.Group as={Col} controlId="formInterestLebel">

@@ -33,8 +33,14 @@ app.post('/post', async(req, res) =>{
     const formCompany = req.body.formCompany;
     const formInfo = req.body.formInfo;
     const formInterestLebel = req.body.formInterestLebel;
+    const formVisitingCard = req.body.formVisitingCard;
 
     try {
+
+        const PORT = 5000;
+        const hostname = formVisitingCard;
+        const url = req.protocol + '://' + hostname + ':' + PORT + req.path;
+
         const result = await User.create({
             "name": formName,
             "phone": formPhone,
@@ -43,6 +49,8 @@ app.post('/post', async(req, res) =>{
             "company": formCompany,
             "info": formInfo,
             "interest" : formInterestLebel,
+            "image" : url,
+
 
         })  
         res.send(req.body);
