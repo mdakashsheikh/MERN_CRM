@@ -5,6 +5,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const User = require('./userSc');
+let multer = require('multer')
+const path = require('path')
 
 mongoose.set('debug', true)
 mongoose.set('strictQuery', false)
@@ -12,6 +14,8 @@ mongoose.set('strictQuery', false)
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 app.get('/', (req, res)=>{
 
@@ -22,7 +26,27 @@ mongoose.connect(process.env.DB_CONN)
 .then(()=> console.log('Database Connected...'))
 .catch(err => console.log(err))
 
-app.post('/post', async(req, res) =>{
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname)) 
+    }
+  })
+  
+  var upload = multer({ storage: storage });
+
+
+app.post('/post', upload.single('photo'), async(req, res) =>{
+
+    // upload(req, res, (err)=>{
+    //     if(err) {
+    //         console.log(err)
+    //     }else {
+    //         const newImage = new User()
+    //     }
+    //  })
 
     console.log(req.body);
     
@@ -33,13 +57,10 @@ app.post('/post', async(req, res) =>{
     const formCompany = req.body.formCompany;
     const formInfo = req.body.formInfo;
     const formInterestLebel = req.body.formInterestLebel;
-    const formVisitingCard = req.body.formVisitingCard;
+    // const formVisitingCard = req.body.formVisitingCard;
 
     try {
-
-        const PORT = 5000;
-        const hostname = formVisitingCard;
-        const url = req.protocol + '://' + hostname + ':' + PORT + req.path;
+        console.log(req.body)
 
         const result = await User.create({
             "name": formName,
@@ -49,10 +70,10 @@ app.post('/post', async(req, res) =>{
             "company": formCompany,
             "info": formInfo,
             "interest" : formInterestLebel,
-            "image" : url,
+            "image" : req.file.filename,
+        })
+        
 
-
-        })  
         res.send(req.body);
         const newUser = new User(result);
         newUser.save();
@@ -62,6 +83,14 @@ app.post('/post', async(req, res) =>{
         console.log(error)
     }
 });
+
+app.get('/image/:filename', (req, res)=>{
+    const filename = req.params.filename;
+    const uploadForlder = './uploads';
+    const filepath = path.resolve(path.join(uploadForlder, filename))
+
+    res.sendFile(filepath)
+})
 
 app.get('/data', async(req, res) => {
     try {

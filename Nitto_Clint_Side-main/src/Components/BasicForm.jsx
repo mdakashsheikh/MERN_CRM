@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios'
 import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -16,7 +17,7 @@ export default function BasicForm() {
   const [formCompany, setFormCompany] = useState("");
   const [formInfo, setFormInfo] = useState("");
   const [formInterestLebel, setFormInterestLebel] = useState("");
-  const [formVisitingCard, setFormVisitingCard] = useState("");
+  const [newUser, setNewUser] = useState("");
 
 
   async function handleSubmit(e) {
@@ -32,27 +33,20 @@ export default function BasicForm() {
     console.log(formInterestLebel)
     
     try {
-      let res = await fetch("http://localhost:5000/post", {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({
-          formName: formName,
-          formPhone: formPhone,
-          formEmail: formEmail,
-          formDesignation: formDesignation,
-          formCompany: formCompany,
-          formInfo: formInfo,
-          formInterestLebel: formInterestLebel,
-          formVisitingCard: formVisitingCard, 
-        }),
-      });
 
-      await res.json();
+      const formData = new FormData();
+        formData.append('formName', formName)
+        formData.append('formPhone', formPhone)
+        formData.append('formEmail', formEmail)
+        formData.append('formDesignation', formDesignation)
+        formData.append('formCompany', formCompany)
+        formData.append('formInfo', formInfo)
+        formData.append('formInterestLebel', formInterestLebel)
+        formData.append('photo', newUser.photo)
+        
+        const result = await axios.post('http://localhost:5000/post', formData)
+        console.log(result.data)
 
-      if (res.status === 200) {
         setFormName("");
         setFormPhone("");
         setFormEmail("");
@@ -60,18 +54,20 @@ export default function BasicForm() {
         setFormCompany("");
         setFormInfo("");
         setFormInterestLebel("")
-        console.log('Success');
-      } else {
-        console.log("Some error occured");
-      }
-    } catch (err) {
+        console.log('Success'); 
+    
+      } catch (err) {
       console.log(err);
     }
+  }
+
+  const handlePhoto=(e)=> {
+    setNewUser({...newUser, photo: e.target.files[0]})
   }
   
 
   return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={(e)=> handleSubmit(e)} >
       <div className='row justify-content-center'>
         <div className='col-4'>
           <h1>Customer List</h1>
@@ -136,10 +132,11 @@ export default function BasicForm() {
         </Row>
 
         <Row className="my-3 mx-auto">
-          <Form.Group as={Col} controlId="formVisitingCard">
+          <Form.Group as={Col} controlId="photo">
             <Form.Label>Visiting Card Upload</Form.Label>
             <Form.Control type='file' 
-              onChange={(e)=> setFormVisitingCard(e.target.value)}
+              accept='.img, .jpg, .jpeg'
+              onChange={(e)=> handlePhoto(e)}
             />
           </Form.Group>
           

@@ -68,7 +68,7 @@ export default function ShowData(){
                         <td>{val.company}</td>
                         <td>{val.info}</td>
                         <td>{val.interest}</td>
-                        <td>{val.image}</td>
+                        <td><img src={'http://localhost:5000/image/' + val.image} alt= "" /></td>
                     </tr>
                 ))}
             </tbody>
