@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 export default function ShowData() {
   const [customer, setCustomer] = useState([]);
@@ -49,6 +50,8 @@ export default function ShowData() {
           <td>Information</td>
           <td>Interest Level</td>
           <td>Image</td>
+          <td></td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -68,6 +71,13 @@ export default function ShowData() {
                 src={"http://localhost:5000/image/" + val.image}
                 alt=""
               />
+            </td>
+            <td>
+              {" "}
+              <Button variant="outline-primary">Edit</Button>
+            </td>
+            <td>
+              <Button variant="outline-danger">Delete</Button>
             </td>
           </tr>
         ))}
