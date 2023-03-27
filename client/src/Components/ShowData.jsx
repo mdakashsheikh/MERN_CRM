@@ -20,7 +20,7 @@ export default function ShowData() {
   };
   console.log(customer);
   return (
-    <Table striped bordered hover variant="danger">
+    <Table striped bordered hover variant="danger" className="mt-4">
       {/* {()=> (
                 customer.length() > 0 ? 
                 null
