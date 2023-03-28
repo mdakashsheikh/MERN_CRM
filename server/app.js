@@ -92,6 +92,17 @@ app.get('/image/:filename', (req, res)=>{
     res.sendFile(filepath)
 })
 
+
+app.get('/customer/:id', async(req, res) => {
+
+    try{
+        const oneData = await User.findById(req.params.id)
+        res.send(oneData);
+    }catch(err){
+        res.status(404).send(err)
+    }
+})
+
 app.get('/data', async(req, res) => {
     try {
         const allData = await User.find({}).sort('-date');
@@ -100,6 +111,50 @@ app.get('/data', async(req, res) => {
         res.json(err);
     }
 })
+
+app.post('/customer/:id', upload.single('photo'), async(req, res)=> {
+
+    const formName = req.body.formName;
+    const formPhone = req.body.formPhone;
+    const formEmail = req.body.formEmail;
+    const formDesignation = req.body.formDesignation;
+    const formCompany = req.body.formCompany;
+    const formInfo = req.body.formInfo;
+    const formInterestLebel = req.body.formInterestLebel;
+    console.log(req.body)
+
+    try {
+        const oneData = await User.findById(req.params.id)
+        oneData.name = formName;
+        oneData.phone = formPhone;
+        oneData.email = formEmail;
+        oneData.designation = formDesignation;
+        oneData.company = formCompany;
+        oneData.info = formInfo;
+        oneData.interest = formInterestLebel;
+        
+        if(req.file && req.file.filename) {
+            oneData.image = req.file.filename;
+        }
+
+        await oneData.save()
+        res.send(oneData)
+    } catch (err) {
+       res.status(404).send(err) 
+    }
+})
+
+app.delete('/customer/:id', async(req, res)=> {
+    const id = req.params.id;
+    try{
+        await User.findByIdAndRemove(id)
+        res.send('Success')
+    }catch(err){
+        res.status(404).send(err)
+    }
+})
+
+
 
 app.listen(5000, ()=> {
     console.log('Server is running on port 5000');

@@ -4,6 +4,7 @@ import './App.css';
 import BasicForm from './Components/BasicForm';
 import Navber from './Components/Navber';
 import ShowData from './Components/ShowData';
+import ShowData2 from './Components/ShowData2';
 
 
 function App() {
@@ -14,10 +15,13 @@ function App() {
        
         <Route exact path='/' Component={BasicForm}/>
         <Route exact path='/ShowData' Component={ShowData}/>
+        <Route exact path='/edit-customer/:id' Component={ShowData2}/>
+
       </Routes>
       
       <Navber/>
       </BrowserRouter>
+
       
      
     </div>
