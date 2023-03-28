@@ -20,8 +20,15 @@ export default function ShowData() {
   };
   console.log(customer);
   return (
-    <Table striped bordered hover variant="danger" className="mt-4">
-      {/* {()=> (
+    <>
+      <div className="row justify-content-center">
+        <div className="col-4">
+          <h1>Customer List</h1>
+        </div>
+      </div>
+
+      <Table striped bordered hover variant="danger" className="mt-4">
+        {/* {()=> (
                 customer.length() > 0 ? 
                 null
                 : 
@@ -40,48 +47,49 @@ export default function ShowData() {
                 </thead>)
             )}   */}
 
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Phone</td>
-          <td>Email</td>
-          <td>Designation</td>
-          <td>Company</td>
-          <td>Information</td>
-          <td>Interest Level</td>
-          <td>Image</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody>
-        {customer.map((val, index) => (
-          <tr key={index}>
-            <td>{val.name}</td>
-            <td>{val.phone}</td>
-            <td>{val.email}</td>
-            <td>{val.designation}</td>
-            <td>{val.company}</td>
-            <td>{val.info}</td>
-            <td>{val.interest}</td>
-            <td>
-              <img
-                height={60}
-                width={120}
-                src={"http://localhost:5000/image/" + val.image}
-                alt=""
-              />
-            </td>
-            <td>
-              {" "}
-              <Button variant="outline-primary">Edit</Button>
-            </td>
-            <td>
-              <Button variant="outline-danger">Delete</Button>
-            </td>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Designation</td>
+            <td>Company</td>
+            <td>Information</td>
+            <td>Interest Level</td>
+            <td>Image</td>
+            <td></td>
+            <td></td>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {customer.map((val, index) => (
+            <tr key={index}>
+              <td>{val.name}</td>
+              <td>{val.phone}</td>
+              <td>{val.email}</td>
+              <td>{val.designation}</td>
+              <td>{val.company}</td>
+              <td>{val.info}</td>
+              <td>{val.interest}</td>
+              <td>
+                <img
+                  height={60}
+                  width={120}
+                  src={"http://localhost:5000/image/" + val.image}
+                  alt=""
+                />
+              </td>
+              <td>
+                {" "}
+                <Button variant="outline-primary">Edit</Button>
+              </td>
+              <td>
+                <Button variant="outline-danger">Delete</Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
   );
 }

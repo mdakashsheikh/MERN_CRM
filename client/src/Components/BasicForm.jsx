@@ -62,7 +62,7 @@ export default function BasicForm() {
     <Form onSubmit={(e) => handleSubmit(e)}>
       <div className="row justify-content-center">
         <div className="col-4">
-          <h1>Customer List</h1>
+          <h1>Customer Form</h1>
         </div>
       </div>
 

@@ -48,7 +48,7 @@ app.post('/post', upload.single('photo'), async(req, res) =>{
     //     }
     //  })
 
-    console.log(req.body);
+    // console.log(req.body);
     
     const formName = req.body.formName;
     const formPhone = req.body.formPhone;
@@ -60,7 +60,7 @@ app.post('/post', upload.single('photo'), async(req, res) =>{
     // const formVisitingCard = req.body.formVisitingCard;
 
     try {
-        console.log(req.body)
+        // console.log(req.body)
 
         const result = await User.create({
             "name": formName,

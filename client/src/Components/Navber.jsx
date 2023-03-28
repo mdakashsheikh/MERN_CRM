@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Navber() {
   return (
@@ -7,10 +7,28 @@ export default function Navber() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              exact
+              to="/"
+              activeStyle={{
+                frontweight: "bold",
+                color: "green",
+              }}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/ShowData">ShowData</Link>
+            <NavLink
+              exact
+              to="/ShowData"
+              activeStyle={{
+                frontweight: "bold",
+                color: "green",
+              }}
+            >
+              ShowData
+            </NavLink>
           </li>
         </ul>
       </nav>
