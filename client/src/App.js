@@ -11,15 +11,15 @@ function App() {
   return (
     <div className="container">
       <BrowserRouter>
-      <Routes>
-       
-        <Route exact path='/' Component={BasicForm}/>
-        <Route exact path='/ShowData' Component={ShowData}/>
-        <Route exact path='/edit-customer/:id' Component={ShowData2}/>
+        <Navber/>
+          <Routes>
+          
+            <Route exact path='/' Component={BasicForm}/>
+            <Route exact path='/ShowData' Component={ShowData}/>
+            <Route exact path='/edit-customer/:id' Component={ShowData2}/>
 
-      </Routes>
+          </Routes>
       
-      <Navber/>
       </BrowserRouter>
 
       

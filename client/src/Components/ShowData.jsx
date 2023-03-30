@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 export default function ShowData() {
   const [customer, setCustomer] = useState([]);
-  const [refresh, setRefresh] = useState(false)
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     customerData();
   }, [refresh]);
 
   const customerData = async () => {
-    const data = await fetch("http://localhost:5000/data", {
+    const data = await fetch("http://192.168.0.110:5000/data", {
       method: "GET",
       body: JSON.stringify(),
     });
@@ -21,16 +21,18 @@ export default function ShowData() {
     setCustomer(allCustomer.allData);
   };
   console.log(customer);
-  
-  async function handleDelete(id){
-    await fetch('http://localhost:5000/customer/' + id, {
-      method: "DELETE"
-    })
-    setRefresh(!refresh)
+
+  async function handleDelete(id) {
+    await fetch("http://192.168.0.110:5000/customer/" + id, {
+      method: "DELETE",
+    });
+    setRefresh(!refresh);
   }
 
-  if(customer.length == 0) {
-    return <h1>No Data...</h1>
+  if (customer.length == 0) {
+    setTimeout(() => {
+      return <h1>No Data...</h1>;
+    }, 1000);
   }
   return (
     <>
@@ -94,12 +96,17 @@ export default function ShowData() {
               </td>
               <td>
                 {" "}
-                <Link to={'/edit-customer/'+val._id}>
+                <Link to={"/edit-customer/" + val._id}>
                   <Button variant="outline-primary">Edit</Button>
                 </Link>
               </td>
               <td>
-                <Button onClick={(e) => handleDelete(val._id)} variant="outline-danger">Delete</Button>
+                <Button
+                  onClick={(e) => handleDelete(val._id)}
+                  variant="outline-danger"
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}

@@ -38,7 +38,10 @@ export default function BasicForm() {
       formData.append("formInterestLebel", formInterestLebel);
       formData.append("photo", newUser.photo);
 
-      const result = await axios.post("http://localhost:5000/post", formData);
+      const result = await axios.post(
+        "http://192.168.0.110:5000/post",
+        formData
+      );
       console.log(result.data);
 
       setFormName("");
