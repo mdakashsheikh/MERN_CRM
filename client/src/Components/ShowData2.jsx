@@ -80,7 +80,7 @@ export default function ShowData() {
     } catch (err) {
       console.log(err);
     }
-    navigate("/ShowData");
+    navigate("/show-data");
   }
 
   const handlePhoto = (e) => {

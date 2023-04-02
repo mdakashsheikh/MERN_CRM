@@ -62,110 +62,119 @@ export default function BasicForm() {
   };
 
   return (
-    <Form onSubmit={(e) => handleSubmit(e)}>
-      <div className="row justify-content-center">
+    <div>
+      <div className="row justify-content-center md">
+        <div className="col-4">
+          <h1>Customer Form</h1>
+        </div>
+      </div>
+      <Card className="container" style={{ width: "40rem" }}>
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          {/* <div className="row justify-content-center">
         <div className="col-4">
           <h1>Customer Form</h1>
         </div>
       </div>
 
-      <Card>
-        <Row className="my-3 mx-auto">
-          <Form.Group as={Col} controlId="formName">
-            <Form.Label>Name:</Form.Label>
-            <Form.Control
-              placeholder="Enter customer name"
-              onChange={(e) => setFormName(e.target.value)}
-              value={formName}
-            />
-          </Form.Group>
+      <Card> */}
+          <Row className="my-3 mx-auto">
+            <Form.Group as={Col} controlId="formName">
+              <Form.Label>Name:</Form.Label>
+              <Form.Control
+                placeholder="Enter customer name"
+                onChange={(e) => setFormName(e.target.value)}
+                value={formName}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formPhone">
-            <Form.Label>Phone</Form.Label>
-            <Form.Control
-              placeholder="Enter Phone number"
-              onChange={(e) => setFormPhone(e.target.value)}
-              value={formPhone}
-            />
-          </Form.Group>
-        </Row>
+            <Form.Group as={Col} controlId="formPhone">
+              <Form.Label>Phone</Form.Label>
+              <Form.Control
+                placeholder="Enter Phone number"
+                onChange={(e) => setFormPhone(e.target.value)}
+                value={formPhone}
+              />
+            </Form.Group>
+          </Row>
 
-        <Row className="my-3 mx-auto">
-          <Form.Group as={Col} controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={(e) => setFormEmail(e.target.value)}
-              value={formEmail}
-            />
-          </Form.Group>
+          <Row className="my-3 mx-auto">
+            <Form.Group as={Col} controlId="formEmail">
+              <Form.Label>Email:</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={(e) => setFormEmail(e.target.value)}
+                value={formEmail}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formDesignation">
-            <Form.Label>Designation</Form.Label>
-            <Form.Control
-              placeholder="Enter Designation"
-              onChange={(e) => setFormDesignation(e.target.value)}
-              value={formDesignation}
-            />
-          </Form.Group>
-        </Row>
+            <Form.Group as={Col} controlId="formDesignation">
+              <Form.Label>Designation</Form.Label>
+              <Form.Control
+                placeholder="Enter Designation"
+                onChange={(e) => setFormDesignation(e.target.value)}
+                value={formDesignation}
+              />
+            </Form.Group>
+          </Row>
 
-        <Row className="my-3 mx-auto">
-          <Form.Group as={Col} controlId="formCompany">
-            <Form.Label>Company:</Form.Label>
-            <Form.Control
-              placeholder="Enter company name"
-              onChange={(e) => setFormCompany(e.target.value)}
-              value={formCompany}
-            />
-          </Form.Group>
+          <Row className="my-3 mx-auto">
+            <Form.Group as={Col} controlId="formCompany">
+              <Form.Label>Company:</Form.Label>
+              <Form.Control
+                placeholder="Enter company name"
+                onChange={(e) => setFormCompany(e.target.value)}
+                value={formCompany}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formInfo">
-            <Form.Label>Information:</Form.Label>
-            <Form.Control
-              placeholder="Enter customer information"
-              onChange={(e) => setFormInfo(e.target.value)}
-              value={formInfo}
-            />
-          </Form.Group>
-        </Row>
+            <Form.Group as={Col} controlId="formInfo">
+              <Form.Label>Information:</Form.Label>
+              <Form.Control
+                placeholder="Enter customer information"
+                onChange={(e) => setFormInfo(e.target.value)}
+                value={formInfo}
+              />
+            </Form.Group>
+          </Row>
 
-        <Row className="my-3 mx-auto">
-          <Form.Group as={Col} controlId="photo">
-            <Form.Label>Visiting Card Upload</Form.Label>
-            <Form.Control
-              type="file"
-              accept=".img, .jpg, .jpeg"
-              onChange={(e) => handlePhoto(e)}
-            />
-          </Form.Group>
+          <Row className="my-3 mx-auto">
+            <Form.Group as={Col} controlId="photo">
+              <Form.Label>Visiting Card Upload</Form.Label>
+              <Form.Control
+                type="file"
+                accept=".img, .jpg, .jpeg"
+                onChange={(e) => handlePhoto(e)}
+              />
+            </Form.Group>
 
-          <Form.Group as={Col} controlId="formInterestLebel">
-            <Form.Label>Interest Lebel</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              onChange={(e) => setFormInterestLebel(e.target.value)}
-              value={formInterestLebel}
-            >
-              <option>Select Interest Level</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-              <option value="5">Five</option>
-            </Form.Select>
-          </Form.Group>
-        </Row>
+            <Form.Group as={Col} controlId="formInterestLebel">
+              <Form.Label>Interest Lebel</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => setFormInterestLebel(e.target.value)}
+                value={formInterestLebel}
+              >
+                <option>Select Interest Level</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
+              </Form.Select>
+            </Form.Group>
+          </Row>
+          {/* </Card> */}
+
+          <div className="row justify-content-center my-3">
+            <div className="col col-lg-2">
+              <Button type="submit" variant="outline-primary">
+                Submit
+              </Button>
+            </div>
+          </div>
+        </Form>
       </Card>
-
-      <div className="row justify-content-center my-3">
-        <div className="col col-lg-2">
-          <Button type="submit" variant="outline-primary">
-            Submit
-          </Button>
-        </div>
-      </div>
-    </Form>
+    </div>
   );
 }
