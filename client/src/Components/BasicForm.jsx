@@ -68,7 +68,7 @@ export default function BasicForm() {
           <h1>Customer Form</h1>
         </div>
       </div>
-      <Card className="container" style={{ width: "40rem" }}>
+      <Card bg="light" className="container" style={{ width: "40rem" }}>
         <Form onSubmit={(e) => handleSubmit(e)}>
           {/* <div className="row justify-content-center">
         <div className="col-4">
